@@ -1,0 +1,40 @@
+<h1>Welcome <%=@user.name %></h1>
+<br/>
+
+    <%= gravatar_for @user %>
+    <h3><%= @user.name %></h3>
+    <h3>Email:<%= @user.email %></h3>
+
+<%if session[:user_id]%>
+
+    <% if @user.name == current_user.name%>
+
+        <h1>MY TWEETS :</h1>
+
+    <%else%>
+
+        <h1> TWEETS :</h1>
+
+    <%end%>
+
+<%else %>
+
+    <h1> TWEETS :</h1>
+
+<%end%>
+
+<% if @tweets.count == 0 %>
+
+    <h3>No tweets yet</h3>
+
+<%end%>
+
+<%@tweets.each do |t|%>
+
+    <a href="/tweets/<%=t.id%>">
+
+    <h2><%=t.title%></h2>
+
+</a>
+
+<%end%>

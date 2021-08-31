@@ -1,0 +1,42 @@
+
+
+<%= form_with model: @tweet do |f| %>
+<% if @tweet.errors.any? %>
+<div id="error_explanation">
+<div class="alert alert-danger">
+The form contains <%= pluralize(@tweet.errors.count, "error") %>.
+</div>
+<ul>
+<% @tweet.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
+
+
+
+
+
+
+<br/>
+<div>
+<%= f.label :title %>
+<%= f.text_field :title, class: "form-control" %>
+</div>
+<br/>
+
+<div>
+<%= f.label :body %>
+<%=  f.text_area :body, class: "form-control" %>
+</div>
+<br/>
+
+<br/>
+
+
+<%= f.submit%>
+
+</div>
+<%end %>
+

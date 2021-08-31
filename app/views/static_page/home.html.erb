@@ -1,0 +1,21 @@
+<div class="jumbotron container text-center">
+<h1 class="text-center">Welcome to Twitter</h1>
+
+<%if session[:user_id]%>
+<form action="/tweets">
+<button class="btn btn-primary btn-lg">Tweets</button>
+</form>
+
+<%else%>
+
+<h3>Sign-in your account</h3>
+<form action="/login">
+<button class="btn btn-primary btn-lg">LOGIN</button>
+</form>
+
+<h3>New user? Sign-up Now</h3>
+<form action="/users/new">
+<button class="btn btn-primary btn-lg">SIGN UP</button>
+</form>
+</div>
+<%end%>

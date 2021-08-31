@@ -1,0 +1,95 @@
+<div class="text-center">
+
+<h1 class="text-center">
+ 
+    <%= @tweet.title %>
+
+</h1>
+
+<p class="date">
+    Submitted <%= time_ago_in_words(@tweet.created_at) %> ago
+</p>
+    <p>Submitted by <%= @tweet.user.name %></p>
+</div>
+       
+<% if session[:user_id]  %>
+  <% if @tweet.user.name == current_user.name%>
+     <%= link_to "EDIT",edit_tweet_path(@tweet), class: "btn btn-primary editbtn" %>
+     <% end %>
+     <% end %>
+<br/>
+
+<%if session[:user_id] %>
+   <% if @tweet.user.name == current_user.name%>
+         <%= link_to "DELETE",tweet_path(@tweet),
+            method: :delete,
+            data:{confirm:"ARE YOU SURE?"}, class: "btn btn-primary deletebtn"%>
+      
+    <% end %>
+  <% end %>
+
+<br/>
+<p class="body text-center">
+
+    <%=@tweet.body%>
+
+</p>
+
+<br/>
+<div class="newbutton text-center">
+<% if session[:user_id] %>
+  <a href="/tweets/new">
+
+      <button type="button" class="btn btn-primary">NEW TWEET</button>
+      
+  </a>
+  <% end %>
+</div>
+
+
+<h3><%= @tweet.comments.count %> COMMENTS</h3>
+    <%@tweet.comments.each do |t|%>
+
+<p><%= t.user.name %>:</p>
+        <p>
+            <strong>comment:</strong>
+            <%= t.comment %>
+        </p>
+
+    
+
+ <% if session[:user_id] %>
+  <% if @tweet.user.name == current_user.name%>
+            <%=link_to "Delete Comment", [t.tweet, t],
+            method: :delete,
+            data: { confirm: 'Are you sure?' }%>
+        <% end %>  
+ <% end %>
+<% end %>
+
+
+
+<% if session[:user_id] %>
+<h3>Add a comment:</h3>
+
+    <%= form_with model: [ @tweet, @tweet.comments.build ] do |form| %>
+    <div class="commenter">
+        <p>
+            <%= form.label :comment %><br>
+            <%= form.text_area :comment, size: "100x2",class: "form-control" %>
+        </p>
+        <%= form.number_field  :user_id, id: :comment_user_id, value: current_user.id, type: :hidden %>
+   
+
+     </div>
+     <br/>
+    
+<%if session[:user_id] %>
+  
+     <div class="text-center">
+           <input type="submit" name="commit" value="CREATE COMMENT" data-disable-with="Create Comment" class="btn btn-primary">
+        </div>
+   
+<% end %>
+<% end %>
+<% end %>
