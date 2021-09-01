@@ -1,12 +1,14 @@
 <div class="text-center">
 <h1 class="text-center">TWEETS</h1>
 
+ 
 
 <% @tweets.each do |p| %>
 <br/>
 
  <h3><%= p.user.name %> :</h3>
 
+  <div class="card-body">
     <a href="/tweets/<%= p.id %>">
         <h2><%=p.title%></h2>
 
@@ -15,12 +17,9 @@
     <p class="date">
         Submitted <%= time_ago_in_words(p.created_at) %> ago
     </p>
-    
- 
     <br/>
-    
- 
     <%end%>
+
 
 
  <% if session[:user_id] %>

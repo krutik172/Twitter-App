@@ -11,10 +11,10 @@
 </p>
     <p>Submitted by <%= @tweet.user.name %></p>
 </div>
-       
+
 <% if session[:user_id]  %>
   <% if @tweet.user.name == current_user.name%>
-     <%= link_to "EDIT",edit_tweet_path(@tweet), class: "btn btn-primary editbtn" %>
+     <%= link_to "EDIT",edit_tweet_path(@tweet), class: "btn btn-primary editbtn " %>
      <% end %>
      <% end %>
 <br/>
@@ -23,11 +23,11 @@
    <% if @tweet.user.name == current_user.name%>
          <%= link_to "DELETE",tweet_path(@tweet),
             method: :delete,
-            data:{confirm:"ARE YOU SURE?"}, class: "btn btn-primary deletebtn"%>
+            data:{confirm:"ARE YOU SURE?"}, class: "btn btn-primary deletebtn "%>
       
     <% end %>
   <% end %>
-
+ 
 <br/>
 <p class="body text-center">
 

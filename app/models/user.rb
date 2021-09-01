@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-   attr_accessor :remember_token
+    attr_accessor :remember_token
     validates :name, presence: true, length: {minimum:3}, uniqueness: {case_sensitive: false}
     validates :email, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: "Enter valid email"}, uniqueness: true, presence: true
     validates :password, presence: true, format: {with: /(?=^.{8,12}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, message: "should be at least one Uppercase,one digit and one special character and upto 8 characters", multiline: true} 
