@@ -20,6 +20,7 @@ class TweetsController < ApplicationController
   def create 
   
     @tweet=Tweet.new(tweet_params)
+    @tweet.image.attach(params[:tweet][:image])
     if @tweet.save
       redirect_to @tweet
     else
@@ -45,6 +46,8 @@ class TweetsController < ApplicationController
             render :edit
             
         end
+      else
+        render :edit
       end
   
      end
@@ -60,7 +63,7 @@ class TweetsController < ApplicationController
   end
   private
   def tweet_params
-    params.require(:tweet).permit(:title,:body,:user_id)
+    params.require(:tweet).permit(:title,:body,:user_id,:image)
   end
 
 

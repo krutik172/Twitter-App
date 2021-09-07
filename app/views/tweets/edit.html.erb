@@ -34,8 +34,12 @@ The form contains <%= pluralize(@tweet.errors.count, "error") %>.
 
 <br/>
 
+<div>
+<%= f.file_field :image%>
+</div>
+<br/>
 
-<%= f.submit%>
+<input type="submit" name="commit" value="Update Tweet" data-disable-with="Update Tweet" class="btn btn-primary">
 
 </div>
 <%end %>

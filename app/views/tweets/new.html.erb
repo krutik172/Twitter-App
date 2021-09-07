@@ -26,6 +26,10 @@ The form contains <%= pluralize(@tweet.errors.count, "error") %>.
 <%=  f.text_area :body, class: "form-control" %>
 </div>
 <br/>
+<div>
+<%= f.file_field :image %>
+</div>
+<br/>
 <%= f.number_field  :user_id, id: :tweet_user_id, value: current_user.id, type: :hidden %>
 <br/>
 

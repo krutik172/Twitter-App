@@ -5,12 +5,16 @@
     <%= @tweet.title %>
 
 </h1>
-
+<div class="imagefile">
+<%= image_tag @tweet.image if @tweet.image.attached? %>
+</div>
 <p class="date">
     Submitted <%= time_ago_in_words(@tweet.created_at) %> ago
 </p>
     <p>Submitted by <%= @tweet.user.name %></p>
 </div>
+
+
 
 <% if session[:user_id]  %>
   <% if @tweet.user.name == current_user.name%>
@@ -29,7 +33,7 @@
   <% end %>
  
 <br/>
-<p class="body text-center">
+<p class="body text-center ">
 
     <%=@tweet.body%>
 

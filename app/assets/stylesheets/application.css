@@ -14,9 +14,14 @@
  *= require_self
  */
  .bodycont{
-     /* margin-top: 75px; */
+     margin-top: 80px;
      font-family: 'Open Sans', sans-serif;
  }
+ a{
+    color: black;
+    text-decoration: none;
+}
+
  /* input {
     border: 1px solid #bbb;
     width: 100%;
@@ -79,3 +84,11 @@ margin-top: 15px;
     margin-top: 15px;
 } 
 
+.imagefile{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.alert{
+    margin-top: 55px;
+}

@@ -1,11 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+most_recent:
+        title: "Sample Test"
+        body: "Writing a short test"
+        created_at: <%= Time.zone.now %>
+        user: michael
 
-one:
-  title: MyString
-  body: MyText
-  user: one
+# one:
+#   title: MyString
+#   body: MyText
+#   user: one
 
-two:
-  title: MyString
-  body: MyText
-  user: two
+# two:
+#   title: MyString
+#   body: MyText
+#   user: two
