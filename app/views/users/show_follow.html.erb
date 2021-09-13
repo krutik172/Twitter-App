@@ -1,0 +1,60 @@
+<% provide(:title, @title) %>
+    <div class="row">
+        <aside class="col-md-4">
+            <section class="user_info">
+                <%= gravatar_for @user %>
+                        <h1><b><%= @user.name %></b></h1>
+                            <%= link_to "view my profile", @user %>
+<h1><b>TWEETS:</b> <%= @user.tweets.count %></h1>
+</section>
+<section class="stats">
+
+<br/>
+<h1>Followers:</h1>
+<%@user.followers.each do |u|%>
+<h2><li><%=link_to u.name,u%></li></h2>
+<%end%>
+
+<h1>Following:</h1>
+<%@user.following.each do |u|%>
+<h2><li><%=link_to u.name,u%></li></h2>
+<%end%>
+
+<%
+=begin%>
+ <% @user ||= current_user %>
+<div class="stats">
+<a href="<%= following_user_path(@user) %>">
+<strong id="following" class="stat">
+<%= @user.following.count %>
+</strong>
+following
+</a>
+<a href="<%= followers_user_path(@user) %>">
+<strong id="followers" class="stat">
+<%= @user.followers.count %>
+</strong>
+followers
+</a>
+</div> 
+<%
+=end%>
+
+
+
+<%
+=begin%>
+ </section>
+</aside>
+<div class="col-md-8">
+<h3><%= @title %></h3>
+
+</ul>
+
+
+</div> 
+<%
+=end%>
+
+</div>
+</div>

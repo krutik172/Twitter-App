@@ -14,17 +14,13 @@
  *= require_self
  */
  .bodycont{
-     margin-top: 80px;
+     margin-top: 70px;
      font-family: 'Open Sans', sans-serif;
  }
- a{
-    color: black;
-    text-decoration: none;
-}
 
- /* input {
+ input {
     border: 1px solid #bbb;
-    width: 100%;
+   
     margin-bottom: 15px;
     
     }
@@ -44,12 +40,12 @@ input {
 }
 
 h1 {
-font-size: 1.4em;
+
 text-align: left;
 letter-spacing: -1px;
 margin-bottom: 3px;
 margin-top: 0px;
-} */
+}
 
 span {
     display: block;
@@ -57,6 +53,9 @@ span {
     margin-left: 20px;
     line-height: 1;
     }
+
+
+    
 .gravatar {
 float: left;
 margin-right: 10px;
@@ -91,4 +90,46 @@ margin-top: 15px;
 
 .alert{
     margin-top: 55px;
+}
+
+.btnnew{
+    margin-bottom: 50px;
+}
+
+.index{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-color: #ebeced;
+}
+
+
+.content{
+    margin: 30px 30px 0px 30px;
+}
+
+.indexh1{
+    margin-bottom: -41px;
+    font-size: 60px;
+}
+
+.comment{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.commentcontent{
+    margin: 20px 25px 20px 25px;
+
+}
+
+.followbtn{
+    margin-top: -162px;
+    margin-left: 231px;
+}
+
+.unfollowbtn{
+    margin-top: -162px;
+    margin-left: 270px;
 }

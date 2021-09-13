@@ -1,8 +1,8 @@
 class TweetsController < ApplicationController
-  # before_action :logged_in_user, only: [:edit, :update]
-  # before_action :correct_user, only: [:edit, :update]
+ 
   def index
     @tweets=Tweet.all.order('created_at DESC')
+   
   
   end
 
@@ -61,6 +61,21 @@ class TweetsController < ApplicationController
     redirect_to root_path
 
   end
+
+  def following
+    @title = "Following"
+    @user = User.find(params[:id])
+   
+    render 'show_follow'
+end
+
+def followers
+    @title = "Followers"
+    @user = User.find(params[:id])
+    
+    render 'show_follow'
+end
+
   private
   def tweet_params
     params.require(:tweet).permit(:title,:body,:user_id,:image)

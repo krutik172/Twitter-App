@@ -1,8 +1,26 @@
-<h1>Welcome <%=@user.name %></h1>
+
+<h1><%=@user.name %></h1>
 <br/>
+<% @user ||= current_user %>
+<div class="stats">
+<a href="<%= following_user_path(@user) %>">
+<strong id="following" class="stat">
+<%= @user.following.count %>
+</strong>
+following
+</a>
+<a href="<%= followers_user_path(@user) %>">
+<strong id="followers" class="stat">
+<%= @user.followers.count %>
+</strong>
+followers
+</a>
+</div>
+
+<%= render 'follow_form' if logged_in? %>
 
     <%= gravatar_for @user %>
-    <h3><%= @user.name %></h3>
+   
     <h3>Email:<%= @user.email %></h3>
 
 <%if session[:user_id]%>

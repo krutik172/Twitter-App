@@ -1,3 +1,4 @@
+ <h3 class="text-center"><%= @tweet.user.name %> tweeted: </h3>
 <div class="text-center">
 
 <h1 class="text-center">
@@ -11,7 +12,7 @@
 <p class="date">
     Submitted <%= time_ago_in_words(@tweet.created_at) %> ago
 </p>
-    <p>Submitted by <%= @tweet.user.name %></p>
+   
 </div>
 
 
@@ -40,7 +41,9 @@
 </p>
 
 <br/>
-<div class="newbutton text-center">
+<%
+=begin%>
+ <div class="newbutton text-center">
 <% if session[:user_id] %>
   <a href="/tweets/new">
 
@@ -48,11 +51,16 @@
       
   </a>
   <% end %>
-</div>
+</div> 
+<%
+=end%>
 
 
 <h3><%= @tweet.comments.count %> COMMENTS</h3>
     <%@tweet.comments.each do |t|%>
+<div class="comment">
+
+<div class="commentcontent">
 
 <p><%= t.user.name %>:</p>
         <p>
@@ -60,28 +68,30 @@
             <%= t.comment %>
         </p>
 
-    
-
  <% if session[:user_id] %>
   <% if @tweet.user.name == current_user.name%>
             <%=link_to "Delete Comment", [t.tweet, t],
             method: :delete,
             data: { confirm: 'Are you sure?' }%>
         <% end %>  
+
  <% end %>
+ </div>
+ </div>
 <% end %>
 
 
 
+
 <% if session[:user_id] %>
-<h3>Add a comment:</h3>
+<h3></h3>
 
     <%= form_with model: [ @tweet, @tweet.comments.build ] do |form| %>
     <div class="commenter">
-        <p>
-            <%= form.label :comment %><br>
+        
+           <h4>Add a comment:<br></h4>
             <%= form.text_area :comment, size: "100x2",class: "form-control" %>
-        </p>
+        
         <%= form.number_field  :user_id, id: :comment_user_id, value: current_user.id, type: :hidden %>
    
 

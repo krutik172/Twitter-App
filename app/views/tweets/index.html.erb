@@ -1,31 +1,38 @@
-<div class="text-center">
-<h1 class="text-center">TWEETS</h1>
+<h1 class="text-center indexh1">TWEETS</h1>
 
- 
+<div class="newbtn">
+<% if session[:user_id] %>
+<a href="/tweets/new" >
+     <button type="button" class="btn btn-lg btn-primary">NEW TWEET</button>
+</a>
+ <% end %>
+ </div>
+
+
 
 <% @tweets.each do |p| %>
 <br/>
-
+<div class="index">
+<div class="content">
+ 
  <h3><%= p.user.name %> :</h3>
 
-  <div class="card-body">
+
     <a href="/tweets/<%= p.id %>">
         <h2><%=p.title%></h2>
 
     </a>
+        <h3><%=p.body%></h3>
 
-    <p class="date">
+    <p class="date ">
         Submitted <%= time_ago_in_words(p.created_at) %> ago
     </p>
     <br/>
-    <%end%>
-
-
-
- <% if session[:user_id] %>
-<a href="/tweets/new">
-     <button type="button" class="btn btn-primary">NEW POST</button>
-</a>
-
+    </div>
 </div>
- <% end %>
+<%end%>
+
+
+
+
+ 

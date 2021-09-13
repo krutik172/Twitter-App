@@ -54,6 +54,20 @@ class UsersController < ApplicationController
         redirect_to(root_url) unless @user == current_user
     end
    
+    def following
+        @title = "Following"
+        @user = User.find(params[:id])
+       
+        render 'show_follow'
+    end
+
+    def followers
+        @title = "Followers"
+        @user = User.find(params[:id])
+        
+        render 'show_follow'
+    end
+
     private
 
     def users_params
