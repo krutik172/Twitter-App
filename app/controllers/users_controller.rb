@@ -4,11 +4,13 @@ class UsersController < ApplicationController
     
     def index
         @user=User.all
+        @users = User.where(activated: FILL_IN)
     end
 
     def show
         @user=User.find(params[:id])
         @tweets = @user.tweets
+        redirect_to root_url and return unless FILL_IN
 
     end
 
@@ -21,8 +23,9 @@ class UsersController < ApplicationController
         @user=User.new(users_params)
         
         if @user.save
-            flash[:success] = "Welcome to the Twitter! Log in to get Started"
-            redirect_to @user
+            @user.send_activation_email
+            flash[:info] = "Please check your email to activate your account."
+            redirect_to root_url
         else
             render :new
         end
