@@ -117,4 +117,20 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'glacial-mountain-04095.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+  :user_name => ENV['SENDGRID_USERNAME'], # This is the string literal 'apikey', NOT the ID of your API key
+  :password =>  ENV['SENDGRID_API_KEY'], # This is the secret sendgrid API key which was issued during API key creation
+  :domain => 'glacial-mountain-04095.herokuapp.com',
+  :address => 'smtp.sendgrid.net',
+  :port => '587',
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 end
