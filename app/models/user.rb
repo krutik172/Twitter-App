@@ -25,7 +25,8 @@ class User < ApplicationRecord
     end
         # Returns a random token.
     def activate
-        update_columns(activated: FILL_IN, activated_at: FILL_IN)
+        update_attribute(:activated, true)
+        update_attribute(:activated_at, Time.zone.now)
     end
     def User.new_token
         SecureRandom.urlsafe_base64
