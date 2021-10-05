@@ -4,13 +4,13 @@ class UsersController < ApplicationController
     
     def index
         @user=User.all
-        @users = User.where(activated: FILL_IN)
+        
     end
 
     def show
         @user=User.find(params[:id])
         @tweets = @user.tweets
-        redirect_to root_url and return unless FILL_IN
+        redirect_to root_url 
 
     end
 
