@@ -4,13 +4,12 @@ class UsersController < ApplicationController
     
     def index
         @user=User.all
-        
+      
     end
 
     def show
         @user=User.find(params[:id])
         @tweets = @user.tweets
-        redirect_to root_url 
 
     end
 
