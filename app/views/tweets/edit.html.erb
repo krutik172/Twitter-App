@@ -1,46 +1,36 @@
-
-
 <%= form_with model: @tweet do |f| %>
-<% if @tweet.errors.any? %>
-<div id="error_explanation">
-<div class="alert alert-danger">
-The form contains <%= pluralize(@tweet.errors.count, "error") %>.
-</div>
-<ul>
-<% @tweet.errors.full_messages.each do |msg| %>
-<li><%= msg %></li>
-<% end %>
-</ul>
-</div>
-<% end %>
+    <% if @tweet.errors.any? %>
+        <div id="error_explanation">
+            <div class="alert alert-danger">
+                The form contains <%= pluralize(@tweet.errors.count, "error") %>.
+            </div>
+        <ul>
+        <% @tweet.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+        <% end %>
+        <br/>
 
+        <div>
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+        
+        <br/>
+        <div>
+            <%= f.label :body %>
+            <%=  f.text_area :body, class: "form-control" %>
+        </div>
+        <br/>
+        <br/>
+        <div>
+            <%= f.file_field :image%>
+        </div>
+        <br/>
 
-
-
-
-
-<br/>
-<div>
-<%= f.label :title %>
-<%= f.text_field :title, class: "form-control" %>
-</div>
-<br/>
-
-<div>
-<%= f.label :body %>
-<%=  f.text_area :body, class: "form-control" %>
-</div>
-<br/>
-
-<br/>
-
-<div>
-<%= f.file_field :image%>
-</div>
-<br/>
-
-<input type="submit" name="commit" value="Update Tweet" data-disable-with="Update Tweet" class="btn btn-primary">
-
-</div>
+            <input type="submit" name="commit" value="Update Tweet" data-disable-with="Update Tweet" class="btn btn-primary">
+    </div>
 <%end %>
 

@@ -4,15 +4,12 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: userk
-  password: password
+
 
 development:
   <<: *default
   adapter: postgresql
   database: Twitter_development
-  username: userk
-  password: password
 
 
 # Warning: The database defined as "test" will be erased and
@@ -22,12 +19,9 @@ test:
   <<: *default
   adapter: postgresql
   database: Twitter_test
-  username: userk
-  password: password
+
 
 production:
   <<: *default
   adapter: postgresql
   database: Twitter_production
-  username: userk
-  password: <%= ENV['GALLERY_PASSWORD'] %>
