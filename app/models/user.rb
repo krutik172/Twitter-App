@@ -62,7 +62,6 @@ class User < ApplicationRecord
         following.include?(other_user)
     end
     def send_activation_email
-        binding.pry
         UserMailer.account_activation(self).deliver_now
     end
 
