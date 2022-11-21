@@ -4,13 +4,11 @@ class UsersController < ApplicationController
     
     def index
         @user=User.all
-      
     end
 
     def show
         @user=User.find(params[:id])
         @tweets = @user.tweets
-
     end
 
     def new
@@ -18,9 +16,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        
-        @user=User.new(users_params)
-        
+        @user=User.new(users_params)       
         if @user.save
             @user.send_activation_email
             flash[:info] = "Please check your email to activate your account."
@@ -66,7 +62,6 @@ class UsersController < ApplicationController
     def followers
         @title = "Followers"
         @user = User.find(params[:id])
-        
         render 'show_follow'
     end
 
@@ -75,6 +70,4 @@ class UsersController < ApplicationController
     def users_params
         params.require(:user).permit(:name,:email,:password,:password_confirmation)
     end
-
-   
 end
