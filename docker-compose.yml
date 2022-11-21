@@ -5,16 +5,6 @@ services:
     image: postgres:14.2
 
     volumes:
-      # We need to tell Docker where on the PostgreSQL
-      # container we want to keep the PostgreSQL data.
-      # In this case we're telling it to use a directory
-      # called /var/lib/postgresql/data, although it
-      # conceivably could have been something else.
-      #
-      # We're associating this directory with something
-      # called a volume. (You can see all your Docker
-      # volumes by running +docker volume ls+.) The name
-      # of our volume is db_data.
       - /var/lib/postgresql/data
     environment:
       RAILS_ENV: development
@@ -48,6 +38,14 @@ services:
     # used in this container.
     env_file:
       - .env
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    links:
+      - web
+
 
 # Declare the volumes that our application uses.
 volumes:
